@@ -258,6 +258,8 @@ while (true) { // 注意：这里是一个死循环，通常实际中不会这�
 
 #### Server
 
+代码在：[../code/chapter2/1-linux-socket-api-simaple/server](../code/chapter2/1-linux-socket-api-simaple/server)
+
 ```c++
 #include <iostream>
 
@@ -348,6 +350,8 @@ int main() {
 
 #### Client
 
+代码在：[../code/chapter2/1-linux-socket-api-simaple/client](../code/chapter2/1-linux-socket-api-simaple/client)
+
 ```c++
 #include <iostream>
 
@@ -409,7 +413,43 @@ int main() {
 }
 ```
 
+#### 运行
+
+先运行server端：
+
+```
+$ ./server
+create socket
+bind success,start listen...
+new connect coming,accept...
+recv: hello 0,len=7
+recv: hello 1,len=7
+recv: hello 2,len=7
+recv: hello 3,len=7
+recv: hello 4,len=7
+recv error:0
+remote 127.0.0.1close connection
+
+Process finished with exit code 15
+```
+
+然后运行client端（按Ctrl+C结束）：
+
+```bash
+connect remote
+recv from:hello 0
+recv from:hello 1
+recv from:hello 2
+recv from:hello 3
+recv from:hello 4
+
+Process finished with exit code 15
+```
+
+
+
 ### TCP优化参数
+
 一览：
 ```cpp
 setSoLinger(false, 0);// 不延迟关闭，减少TIME_WAIT套接字的数量
